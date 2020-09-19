@@ -809,7 +809,7 @@ class Loss(nn.Module):
         self.config = config
         self.pred_loss = PredLoss(config)
 
-    def forward(self, out: Dict) -> Dict:
+    def forward(self, out: Dict, data: Dict) -> Dict:
         loss_out = self.pred_loss(out, gpu(data["gt_preds"]), gpu(data["has_preds"]))
         loss_out["loss"] = loss_out["cls_loss"] / (
             loss_out["num_cls"] + 1e-10

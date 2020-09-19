@@ -95,7 +95,7 @@ def main():
     else:
         # for test set: save as h5 for submission in evaluation server
         from argoverse.evaluation.competition_util import generate_forecasting_h5
-        generate_forecasting_h5(preds, output_path)  # this might take awhile
+        generate_forecasting_h5(preds, f"{config['save_dir']}/submit.h5")  # this might take awhile
     import ipdb;ipdb.set_trace()
 
 

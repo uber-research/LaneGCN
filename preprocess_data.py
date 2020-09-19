@@ -45,7 +45,6 @@ def main():
         shuffle=False,
         collate_fn=collate_fn,
         pin_memory=True,
-        worker_init_fn=worker_init_fn,
         drop_last=False,
     )
 
@@ -74,13 +73,6 @@ def main():
     train(config, train_loader, args.model)
     val(config, val_loader, args.model)
     test(config, test_loader, args.model)
-
-
-def worker_init_fn(pid):
-    np_seed = int(pid)
-    np.random.seed(np_seed)
-    random_seed = np.random.randint(2 ** 32 - 1)
-    random.seed(random_seed)
 
 
 def train(config, train_loader, model):
