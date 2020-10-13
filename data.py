@@ -1,3 +1,7 @@
+# Copyright (c) 2020 Uber Technologies, Inc.
+# Please check LICENSE for more detail
+
+
 import numpy as np
 import torch
 from torch.utils.data import Dataset
@@ -24,6 +28,7 @@ class ArgoDataset(Dataset):
             self.am = ArgoverseMap()
 
         if 'raster' in config and config['raster']:
+            #TODO: DELETE
             self.map_query = MapQuery(config['map_scale'])
             
     def __getitem__(self, idx):
@@ -345,6 +350,7 @@ class ArgoDataset(Dataset):
         
         for key in ['pre', 'suc']:
             if 'scales' in self.config and self.config['scales']:
+                #TODO: delete here
                 graph[key] += dilated_nbrs2(graph[key][0], graph['num_nodes'], self.config['scales'])
             else:
                 graph[key] += dilated_nbrs(graph[key][0], graph['num_nodes'], self.config['num_scales'])
@@ -376,6 +382,7 @@ class ArgoTestDataset(ArgoDataset):
             data['argo_id'] = int(self.avl.seq_list[idx].name[:-4]) #160547
 
             if self.train and self.config['rot_aug']:
+                #TODO: Delete Here because no rot_aug
                 new_data = dict()
                 for key in ['orig', 'gt_preds', 'has_preds']:
                     new_data[key] = ref_copy(data[key])
@@ -422,7 +429,8 @@ class ArgoTestDataset(ArgoDataset):
             return len(self.avl)
 
 class MapQuery(object):
-    """Query rasterized map for a given region"""
+    #TODO: DELETE HERE No used
+    """[Deprecated] Query rasterized map for a given region"""
     def __init__(self, scale, autoclip=True):
         """
         scale: one meter -> num of `scale` voxels 

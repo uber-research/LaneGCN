@@ -1,7 +1,7 @@
 # LaneGCN: Learning Lane Graph Representations for Motion Forecasting
 
 
- [Paper](https://arxiv.org/pdf/2007.13732) | [Slides](http://www.cs.toronto.edu/~byang/slides/LaneGCN.pdf)  | [Project Page]() | [**ECCV 2020 Oral** Video]()
+ [Paper](https://arxiv.org/pdf/2007.13732) | [Slides](http://www.cs.toronto.edu/~byang/slides/LaneGCN.pdf)  | [Project Page]() | [**ECCV 2020 Oral** Video](./mp4/video.mp4)
 
 Ming Liang, Bin Yang, Rui Hu, Yun Chen, Renjie Liao, Song Feng, Raquel Urtasun
 
@@ -20,8 +20,8 @@ You need to install following packages in order to run the code:
 
 1. Following is an example of create environment **from scratch** with anaconda:
 ```sh
-conda create --name lgn python=3.7
-conda activate lgn
+conda create --name lanegcn python=3.7
+conda activate lanegcn
 conda install pytorch torchvision cudatoolkit=10.2 -c pytorch # pytorch=1.5.1 when the code is release
 
 # install argoverse api
@@ -61,7 +61,7 @@ tar xvf forecasting_val_v1.1.tar.gz
 tar xvf forecasting_test_v1.1.tar.gz
 
 # step3: [Optional but HIGHLY RECOMMENDED] preprocess data to accelerate training
-python preprocess_data.py -m lgn
+python preprocess_data.py -m lanegcn
 ```
 
 ## Training
@@ -80,7 +80,7 @@ It takes 11 hours to train the model in 4 GPUS (RTX 5000) with horovod.
 
 ### [Recommended] Training/Debug with Horovod in single gpu 
 ```sh
-python train.py -m lgn
+python train.py -m lanegcn
 ```
 
 ### Training/Debug with Single GPU
@@ -91,11 +91,11 @@ python train.py
 ## Testing
 ### Inference test set for submission
 ```
-python test.py -m lgn --weight=46.000.ckpt --split=test
+python test.py -m lanegcn --weight=46.000.ckpt --split=test
 ```
 ### Inference validation set for metrics
 ```
-python test.py -m lgn --weight=46.000.ckpt --split=val
+python test.py -m lanegcn --weight=46.000.ckpt --split=val
 ```
 
 **Qualitative results**
@@ -116,7 +116,7 @@ check [LICENSE](LICENSE)
 
 ## Citation
 If you use our source code, please consider citing the following:
-```
+```bibtex
 @InProceedings{liang2020learning,
   title={Learning lane graph representations for motion forecasting},
   author={Liang, Ming and Yang, Bin and Hu, Rui and Chen, Yun and Liao, Renjie and Feng, Song and Urtasun, Raquel},
@@ -124,3 +124,5 @@ If you use our source code, please consider citing the following:
   year={2020}
 }
 ```
+
+If you have any questions regarding the code, please open a ticket and @chenyuntc.

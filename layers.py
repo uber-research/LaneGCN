@@ -1,3 +1,7 @@
+# Copyright (c) 2020 Uber Technologies, Inc.
+# Please check LICENSE for more detail
+
+
 import numpy as np
 from fractions import gcd
 from numbers import Number

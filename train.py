@@ -1,3 +1,7 @@
+# Copyright (c) 2020 Uber Technologies, Inc.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 
 os.umask(0)
@@ -34,7 +38,7 @@ sys.path.insert(0, root_path)
 
 parser = argparse.ArgumentParser(description="Fuse Detection in Pytorch")
 parser.add_argument(
-    "-m", "--model", default="model", type=str, metavar="MODEL", help="model name"
+    "-m", "--model", default="lanegcn", type=str, metavar="MODEL", help="model name"
 )
 parser.add_argument("--eval", action="store_true")
 parser.add_argument(
