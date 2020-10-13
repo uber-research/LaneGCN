@@ -80,14 +80,19 @@ python test.py -m lanegcn --weight=46.000.ckpt --split=val
 
 **Qualitative results**
 
-\[<span style="color:#A52A2A"><b>Labels(Red)  </b> </span>   <span style="color:#228B22"><b>  Prediction (Green) </span></b>   <span style="color:#1E90FF"><b>   Other agents(Blue)</b></span>\]
+Labels(Red) Prediction (Green) Other agents(Blue)
 
-<p align="center">
-<img src="misc/5304.gif" width = "33.3333%"  align=left />
-<img src="misc/25035.gif" width = "33.3333%"  />
-<img src="misc/19406.gif" width = "33.3333%"  align=right />
+
+
+
+
+<p>
+<img src="misc/5304.gif" width = "30.333%"  align="left" />
+<img src="misc/25035.gif" width = "30.333%" align="center"  />
+ <img src="misc/19406.gif" width = "30.333%" align="right"   />
 </p>
 
+------
 
 **Quantitative results**
 ![img](misc/res_quan.png)
