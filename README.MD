@@ -41,27 +41,7 @@ if you have any issues regarding horovod, please refer to [horovod github](https
 
 ## Prepare Data: Argoverse Motion Forecasting
 ```sh
-mkdir dataset && cd dataset
-
-# step1: download Argoverse HD Maps
-wget https://s3.amazonaws.com/argoai-argoverse/hd_maps.tar.gz
-tar xf hd_maps.tar.gz
-# copy map to argoverseapi root folder
-PY_SITE_PACKAGE_PATH=$(python -c 'import site; print(site.getsitepackages()[0])')
-echo "copying map files to python3.7/site-packages: ", $PY_SITE_PACKAGE_PATH
-cp -r map_files $PY_SITE_PACKAGE_PATH
-
-# step2: download Argoverse Motion Forecasting **v1.1** 
-# train + val + test
-wget https://s3.amazonaws.com/argoai-argoverse/forecasting_train_v1.1.tar.gz
-wget https://s3.amazonaws.com/argoai-argoverse/forecasting_val_v1.1.tar.gz
-wget https://s3.amazonaws.com/argoai-argoverse/forecasting_test_v1.1.tar.gz
-tar xvf forecasting_train_v1.1.tar.gz
-tar xvf forecasting_val_v1.1.tar.gz
-tar xvf forecasting_test_v1.1.tar.gz
-
-# step3: [Optional but HIGHLY RECOMMENDED] preprocess data to accelerate training
-python preprocess_data.py -m lanegcn
+bash get_data.sh
 ```
 
 ## Training
@@ -75,7 +55,7 @@ horovodrun -np 4 -H localhost:4 python /path/to/train.py -m angle90
 # 2 nodes, each with 4 gpus
 horovodrun -np 8 -H serverA:4,serverB:4 python /path/to/train.py -m angle90
 ``` 
-
+\
 It takes 11 hours to train the model in 4 GPUS (RTX 5000) with horovod.
 
 ### [Recommended] Training/Debug with Horovod in single gpu 
@@ -99,13 +79,14 @@ python test.py -m lanegcn --weight=46.000.ckpt --split=val
 ```
 
 **Qualitative results**
-\[<span style="color:#A52A2A"><b>Labels  </b> </span>   <span style="color:#228B22"><b>  Prediction </span></b>   <span style="color:#1E90FF"><b>   Other agents</b></span>\]
 
-<center class="half">
-<img src="misc/5304.gif" width = "33.3333%"  align=right />
+\[<span style="color:#A52A2A"><b>Labels(Red)  </b> </span>   <span style="color:#228B22"><b>  Prediction (Green) </span></b>   <span style="color:#1E90FF"><b>   Other agents(Blue)</b></span>\]
+
+<p align="center">
+<img src="misc/5304.gif" width = "33.3333%"  align=left />
 <img src="misc/25035.gif" width = "33.3333%"  />
 <img src="misc/19406.gif" width = "33.3333%"  align=right />
-</center>
+</p>
 
 
 **Quantitative results**
@@ -125,4 +106,4 @@ If you use our source code, please consider citing the following:
 }
 ```
 
-If you have any questions regarding the code, please open a ticket and @chenyuntc.
+If you have any questions regarding the code, please open a ticket and [@chenyuntc](https://github.com/chenyuntc).
