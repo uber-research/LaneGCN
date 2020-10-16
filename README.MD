@@ -42,17 +42,15 @@ pip install  git+https://github.com/argoai/argoverse-api.git
 pip install scikit-image IPython tqdm ipdb
 ```
 
-2. \[Optional but Recommended\] Install [Horovod](https://github.com/horovod/horovod#install)  for distributed training. Horovod is more efficient than `nn.DataParallel` for mulit-gpu training and easier to use than `nn.DistributedDataParallel`. Before install horovod, make sure you have openmpi installed (`sudo apt-get install -y openmpi-bin`).
+2. \[Optional but Recommended\] Install [Horovod](https://github.com/horovod/horovod#install) and `mpi4py` for distributed training. Horovod is more efficient than `nn.DataParallel` for mulit-gpu training and easier to use than `nn.DistributedDataParallel`. Before install horovod, make sure you have openmpi installed (`sudo apt-get install -y openmpi-bin`).
 ```sh
+pip install mpi4py
+
 # install horovod with GPU support, this may take a while
 HOROVOD_GPU_OPERATIONS=NCCL pip install horovod==0.19.4
 
-
 # if you have only SINGLE GPU, install for code-compatibility
 pip install horovod
-
-
-pip install mpi4py
 ```
 if you have any issues regarding horovod, please refer to [horovod github](https://github.com/horovod/horovod)
 
