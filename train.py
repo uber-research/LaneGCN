@@ -17,20 +17,22 @@ import shutil
 from importlib import import_module
 from numbers import Number
 
+from tqdm import tqdm
 import torch
 from torch.utils.data import Sampler, DataLoader
 import horovod.torch as hvd
 
-hvd.init()
-torch.cuda.set_device(hvd.local_rank())
+
 from torch.utils.data.distributed import DistributedSampler
 
 from utils import Logger, load_pretrain
 
 from mpi4py import MPI
 
-comm = MPI.COMM_WORLD
 
+comm = MPI.COMM_WORLD
+hvd.init()
+torch.cuda.set_device(hvd.local_rank())
 
 root_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, root_path)
@@ -170,7 +172,7 @@ def train(epoch, config, train_loader, net, loss, post_process, opt, val_loader=
 
     start_time = time.time()
     metrics = dict()
-    for i, data in enumerate(train_loader):
+    for i, data in tqdm(enumerate(train_loader),disable=hvd.rank()):
         epoch += epoch_per_batch
         data = dict(data)
 
