@@ -130,4 +130,4 @@ If you use our source code, please consider citing the following:
 }
 ```
 
-If you have any questions regarding the code, please open a ticket and [@chenyuntc](https://github.com/chenyuntc).
+If you have any questions regarding the code, please open an issue and [@chenyuntc](https://github.com/chenyuntc).
