@@ -25,6 +25,7 @@ class ArgoDataset(Dataset):
                 self.split = np.load(self.config['preprocess_val'], allow_pickle=True)
         else:
             self.avl = ArgoverseForecastingLoader(split)
+            self.avl.seq_list = sorted(self.avl.seq_list)
             self.am = ArgoverseMap()
 
         if 'raster' in config and config['raster']:
@@ -366,6 +367,7 @@ class ArgoTestDataset(ArgoDataset):
         split = self.config['preprocess_val'] if split=='val' else self.config['preprocess_test']
 
         self.avl = ArgoverseForecastingLoader(split2)
+        self.avl.seq_list = sorted(self.avl.seq_list)
         if 'preprocess' in config and config['preprocess']:
             if train:
                 self.split = np.load(split, allow_pickle=True)
