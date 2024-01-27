@@ -20,7 +20,7 @@ Ming Liang, Bin Yang, Rui Hu, Yun Chen, Renjie Liao, Song Feng, Raquel Urtasun
 
 Table of Contents
 =================
-  * [Install Dependancy](#install-dependancy)
+  * [Install Dependency](#install-dependency)
   * [Prepare Data](#prepare-data-argoverse-motion-forecasting)
   * [Training](#training)
   * [Testing](#testing)
@@ -29,7 +29,7 @@ Table of Contents
 
 
 
-## Install Dependancy
+## Install Dependency
 You need to install following packages in order to run the code:
 - [PyTorch>=1.3.1](https://pytorch.org/)
 - [Argoverse API](https://github.com/argoai/argoverse-api#installation)
@@ -44,7 +44,7 @@ conda install pytorch==1.5.1 torchvision cudatoolkit=10.2 -c pytorch # pytorch=1
 # install argoverse api
 pip install  git+https://github.com/argoai/argoverse-api.git
 
-# install others dependancy
+# install other dependencies
 pip install scikit-image IPython tqdm ipdb
 ```
 
